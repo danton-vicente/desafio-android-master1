@@ -1,5 +1,6 @@
 package com.picpay.desafio.android.presentation.viewmodels
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.picpay.desafio.android.domain.useCase.GetUserUseCase
@@ -88,7 +89,8 @@ class ContactsScreenViewModel(
         }
     }
 
-    private fun emitNavigationEvents(event: ContactsScreenNavigationEvents) {
+    @VisibleForTesting
+    fun emitNavigationEvents(event: ContactsScreenNavigationEvents) {
         viewModelScope.launch {
             navigationEvents.emit(event)
         }
