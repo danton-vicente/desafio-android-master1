@@ -11,7 +11,7 @@ import com.picpay.desafio.android.presentation.ContactsScreen
 import com.picpay.desafio.android.presentation.ContactsScreenState
 import com.picpay.desafio.android.presentation.ContactsScreenViewModel
 import com.picpay.desafio.android.ui.rememberFlowWithLifecycle
-import com.vidishopper.VidiApp.presentation.ui.exampleCompose.routes.ContactsRoutes
+import com.picpay.desafio.android.presentation.routes.ContactsRoutes
 import org.koin.androidx.compose.koinViewModel
 
 @Composable

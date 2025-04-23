@@ -3,6 +3,7 @@ package com.picpay.desafio.android.data_local.model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
+import com.picpay.desafio.android.data_local.database.CommentsConverter
 
 @Entity(tableName = "user")
 data class UserEntity(
@@ -11,6 +12,6 @@ data class UserEntity(
     val name: String,
     val username: String,
     val lastUpdated: Long,
-    @TypeConverters(UserEntity::class)
+    @TypeConverters(CommentsConverter::class)
     val comments: String,
 )
