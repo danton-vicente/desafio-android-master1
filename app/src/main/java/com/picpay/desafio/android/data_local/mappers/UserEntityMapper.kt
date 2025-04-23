@@ -1,7 +1,5 @@
 package com.picpay.desafio.android.data_local.mappers
 
-import com.picpay.desafio.android.commons.utils.fromJson
-import com.picpay.desafio.android.commons.utils.toJson
 import com.picpay.desafio.android.data_local.model.UserEntity
 import com.picpay.desafio.android.domain.model.UserData
 
@@ -10,7 +8,7 @@ fun UserEntity.toDomain() = UserData(
     name = this.name,
     username = this.username,
     img = this.img,
-    comments = fromJson<List<String>>(this.comments)
+    comments = this.comments
 )
 
 fun UserData.toEntity(currentTime: Long) = UserEntity(
@@ -19,5 +17,5 @@ fun UserData.toEntity(currentTime: Long) = UserEntity(
     username = this.username,
     img = this.img,
     lastUpdated = currentTime,
-    comments = toJson(this.comments)
+    comments = this.comments
 )

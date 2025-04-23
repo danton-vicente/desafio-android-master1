@@ -111,61 +111,6 @@ class UserLocalDataSourceImplTest {
         assertEquals(expected, result)
     }
 
-    @Test
-    fun `getAllUsers database error`() {
-        // Simulate a database error when calling getAllUsers and verify that an appropriate exception is thrown.
-        // TODO implement test
-    }
-
-    @Test
-    fun `getAllUsers mapping error`() {
-        // Test that if there is an issue mapping the database entity to a UserData object, an appropriate exception is thrown.
-        // TODO implement test
-    }
-
-    @Test
-    fun `getAllUsers recent update error`() {
-        // Simulate a database error when getting the recent update timestamp 
-        // when calling getAllUsers and verify that an appropriate exception is thrown.
-        // TODO implement test
-    }
-
-    @Test
-    fun `insertUsers valid users`() {
-
-    }
-
-    @Test
-    fun `insertUsers empty user list`() {
-        // Test that insertUsers handles an empty list of users without errors.
-        // TODO implement test
-    }
-
-    @Test
-    fun `insertUsers database error`() {
-        // Simulate a database error during insertion and verify that an appropriate exception is thrown.
-        // TODO implement test
-    }
-
-    @Test
-    fun `insertUsers mapping error`() {
-        // Test that if there is an issue mapping the UserData object to a database entity, 
-        // an appropriate exception is thrown.
-        // TODO implement test
-    }
-
-    @Test
-    fun `getLastUpdateDate valid date`() {
-        // Test that getLastUpdateDate returns the most recent update timestamp from the database.
-        // TODO implement test
-    }
-
-    @Test
-    fun `getLastUpdateDate empty database`() {
-        // Test that when the database has no update entries, getLastUpdateDate returns a default value (e.g., 0).
-        // TODO implement test
-    }
-
     private fun getMockedEntity(): List<UserEntity> {
         return listOf(
             UserEntity(
@@ -173,7 +118,7 @@ class UserLocalDataSourceImplTest {
                 name = "John Doe",
                 username = "johndoe",
                 img = "https://example.com/johndoe.jpg",
-                comments = "",
+                comments = listOf("Hello World"),
                 lastUpdated = FAKE_TIMESTAMP - 120 * 1000,
             ),
             UserEntity(
@@ -181,7 +126,7 @@ class UserLocalDataSourceImplTest {
                 name = "Jane Smith",
                 username = "janesmith",
                 img = "https://example.com/janesmith.jpg",
-                comments = "[Testing comments,this is a test,this is a test]",
+                comments = listOf("Testing comments","this is a test","this is a test"),
                 lastUpdated = FAKE_TIMESTAMP - 120 * 1000,
             ),
             UserEntity(
@@ -189,7 +134,7 @@ class UserLocalDataSourceImplTest {
                 name = "Alice Johnson",
                 username = "alicej",
                 img = "https://example.com/alicej.jpg",
-                comments = "",
+                comments = listOf(),
                 lastUpdated = FAKE_TIMESTAMP - 120 * 1000,
             ),
             UserEntity(
@@ -197,7 +142,7 @@ class UserLocalDataSourceImplTest {
                 name = "Bob Brown",
                 username = "bobbrown",
                 img = "https://example.com/bobbrown.jpg",
-                comments = "",
+                comments = listOf(),
                 lastUpdated = FAKE_TIMESTAMP - 60 * 1000,
             )
         )

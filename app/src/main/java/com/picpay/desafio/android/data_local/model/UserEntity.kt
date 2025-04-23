@@ -13,5 +13,5 @@ data class UserEntity(
     val username: String,
     val lastUpdated: Long,
     @TypeConverters(CommentsConverter::class)
-    val comments: String,
+    val comments: List<String>,
 )
