@@ -39,7 +39,7 @@ fun UserPhotoWithInitials(
     val context = LocalContext.current
     var url by remember { mutableStateOf(photoUrl) }
 
-    if (url != null) {
+    if (!url.isNullOrEmpty()) {
         SubcomposeAsyncImage(
             modifier = modifier
                 .clip(CircleShape),

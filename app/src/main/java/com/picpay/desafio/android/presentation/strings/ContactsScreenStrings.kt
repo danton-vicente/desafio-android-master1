@@ -1,4 +1,4 @@
-package com.picpay.desafio.android.presentation
+package com.picpay.desafio.android.presentation.strings
 
 data class ContactsScreenStrings(
     val topbarTitle: String,

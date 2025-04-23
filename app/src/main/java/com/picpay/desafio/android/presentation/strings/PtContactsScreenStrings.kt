@@ -1,13 +1,15 @@
-package com.picpay.desafio.android.presentation
+package com.picpay.desafio.android.presentation.strings
 
+import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.Locale.getDefault
 
 val PtContactsScreenStrings = ContactsScreenStrings(
     topbarTitle = "Contatos",
     lastUpdated = { time ->
-        val dateFormat = java.text.SimpleDateFormat("dd/MM 'às' HH:mm", getDefault())
-        dateFormat.format(java.util.Date(time))
-        "Ultima atualização: ${dateFormat.format(java.util.Date(time))}"
+        val dateFormat = SimpleDateFormat("dd/MM 'às' HH:mm", getDefault())
+        dateFormat.format(Date(time))
+        "Ultima atualização: ${dateFormat.format(Date(time))}"
     },
     noContacts = "Você ainda não tem nenhum contato.",
     connectionErrorTitle = "Ops! Parece que você não está conectado à internet.",

@@ -20,11 +20,15 @@ val dataLocalModule = module {
 
     // Tables
     single { get<AppDatabase>().getUserDao() }
+    single { get<AppDatabase>().getCommentsDao() }
 
     // DataSources
-    single<UserLocalDataSource> { UserLocalDataSourceImpl(
-        timeProvider = get(),
-        userDao = get()
-    ) }
+    single<UserLocalDataSource> {
+        UserLocalDataSourceImpl(
+            timeProvider = get(),
+            userDao = get(),
+            commentsDAO = get(),
+        )
+    }
 
 }

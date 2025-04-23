@@ -241,66 +241,7 @@ class UserRepositoryImplTest {
         }
         assertEquals(expectedResult, result)
     }
-
-    @Test
-    fun `getAllUsers empty local data`() {
-        // Test when local data source returns an empty list, it should return an empty list and timestamp.
-        // TODO implement test
-    }
-
-    @Test
-    fun `getAllUsers large dataset from remote`() {
-        // Test when remote data source returns a very large dataset, check if the insert into local works correctly 
-        // and no memory issues.
-        // TODO implement test
-    }
-
-    @Test
-    fun `getAllUsers timestamp edge case   exactly 5 mins`() {
-        // Test when data was last updated exactly 5 minutes ago, it should return the local data.
-        // TODO implement test
-    }
-
-    @Test
-    fun `getAllUsers timestamp edge case   just over 5 mins`() {
-        // Test when data was last updated just over 5 minutes ago, it should fetch from 
-        // remote and update local.
-        // TODO implement test
-    }
-
-    @Test
-    fun `addCommentsToUser success`() {
-        // Test when comments are successfully added to the user. 
-        // Note this function has a TODO meaning it hasn't been implemented, but 
-        // will have some functionality later on.
-        // TODO implement test
-    }
-
-    @Test
-    fun `addCommentsToUser null input user`() {
-        // Test with null input user, should function throw an error? if so what error?.
-        // TODO implement test
-    }
-
-    @Test
-    fun `addCommentsToUser empty comments string`() {
-        // Test with an empty string for comments, should function throw an error?.
-        // TODO implement test
-    }
-
-    @Test
-    fun `addCommentsToUser very large comment string`() {
-        // Test with an very large string for comments, does the function have any limitation 
-        // on the length of input string.
-        // TODO implement test
-    }
-
-    @Test
-    fun `addCommentsToUser invalid characters`() {
-        // Test with special or invalid characters in the comment string, what error is thrown?
-        // TODO implement test
-    }
-
+    
     private fun expectedResult(): List<UserData> {
         return listOf(
             UserData(
@@ -308,28 +249,36 @@ class UserRepositoryImplTest {
                 name = "John Doe",
                 username = "johndoe",
                 img = "https://example.com/johndoe.jpg",
-                comments = listOf("Hello World"),
+                bitcoinWallet = "1sgQxKtQBtHc1wvEw42s9hcnz8VF9ee6",
+                ethereumWallet = "0x3103a5b4a0b1c51d2de4b8ebd13a3cfefdcd43aa",
+                litecoinWallet = "3tzpUeALpoPcpJFZ6CH3k37JtH7WS9eYY",
             ),
             UserData(
                 id = 2,
                 name = "Jane Smith",
                 username = "janesmith",
                 img = "https://example.com/janesmith.jpg",
-                comments = listOf("Testing comments"),
+                bitcoinWallet = "1sgQxKtQBtHc1w123vs9hcnz8VF9ee6",
+                ethereumWallet = "0x3103a5b4a0b1c51dbasf2de4b8ebd13a3cfefdcd43aa",
+                litecoinWallet = "3tzpUeALpoPcpJFZ612317JtH7WS9eYY",
             ),
             UserData(
                 id = 3,
                 name = "Alice Johnson",
                 username = "alicej",
                 img = "https://example.com/alicej.jpg",
-                comments = listOf(),
+                bitcoinWallet = "1sgQxKtQBtHc1wvEw4dfdf2s9hcnz8VF9ee6",
+                ethereumWallet = "0x3103a5b4a0b1c5123ffasebd13a3cfefdcd43aa",
+                litecoinWallet = "3tzpUeALpoPc123412fhbjh3k37JtH7WS9eYY",
             ),
             UserData(
                 id = 4,
                 name = "Bob Brown",
                 username = "bobbrown",
                 img = "https://example.com/bobbrown.jpg",
-                comments = listOf(),
+                bitcoinWallet = "1sgQxKtQBtHc123123cnz8VF9ee6",
+                ethereumWallet = "0x3103a5b4a0b1c5sdgasdgf8ebd13a3cfefdcd43aa",
+                litecoinWallet = "3tzpUeALpoPcpJ3233ftH7WS9eYY",
             )
         )
     }

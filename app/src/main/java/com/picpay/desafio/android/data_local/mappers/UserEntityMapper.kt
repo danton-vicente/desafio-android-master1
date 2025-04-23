@@ -8,7 +8,9 @@ fun UserEntity.toDomain() = UserData(
     name = this.name,
     username = this.username,
     img = this.img,
-    comments = this.comments
+    bitcoinWallet = this.bitcoinWallet,
+    ethereumWallet = this.ethereumWallet,
+    litecoinWallet = this.litecoinWallet,
 )
 
 fun UserData.toEntity(currentTime: Long) = UserEntity(
@@ -16,6 +18,8 @@ fun UserData.toEntity(currentTime: Long) = UserEntity(
     name = this.name,
     username = this.username,
     img = this.img,
+    bitcoinWallet = this.bitcoinWallet,
+    ethereumWallet = this.ethereumWallet,
+    litecoinWallet = this.litecoinWallet,
     lastUpdated = currentTime,
-    comments = this.comments
 )

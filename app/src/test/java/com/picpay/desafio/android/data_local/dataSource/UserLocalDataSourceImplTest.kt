@@ -1,6 +1,7 @@
 package com.picpay.desafio.android.data_local.dataSource
 
 import com.picpay.desafio.android.commons.utils.TimeProvider
+import com.picpay.desafio.android.data_local.dao.CommentsDAO
 import com.picpay.desafio.android.data_local.dao.UserDAO
 import com.picpay.desafio.android.data_local.model.UserEntity
 import com.picpay.desafio.android.di.testModule
@@ -24,6 +25,9 @@ class UserLocalDataSourceImplTest {
     @Mock
     private lateinit var userDao: UserDAO
 
+    @Mock
+    private lateinit var commentsDAO: CommentsDAO
+
     private lateinit var subject: UserLocalDataSourceImpl
 
     @Before
@@ -32,7 +36,8 @@ class UserLocalDataSourceImplTest {
         startKoin { modules(testModule) }
         subject = UserLocalDataSourceImpl(
             timeProvider = timeProvider,
-            userDao = userDao
+            userDao = userDao,
+            commentsDAO = commentsDAO
         )
     }
 
@@ -118,7 +123,9 @@ class UserLocalDataSourceImplTest {
                 name = "John Doe",
                 username = "johndoe",
                 img = "https://example.com/johndoe.jpg",
-                comments = listOf("Hello World"),
+                bitcoinWallet = "1sgQxKtQBtHc123123cnz8VF9ee6",
+                ethereumWallet = "0x3103a5b4a0b1c5sdgasdgf8ebd13a3cfefdcd43aa",
+                litecoinWallet = "3tzpUeALpoPcpJ3233ftH7WS9eYY",
                 lastUpdated = FAKE_TIMESTAMP - 120 * 1000,
             ),
             UserEntity(
@@ -126,7 +133,9 @@ class UserLocalDataSourceImplTest {
                 name = "Jane Smith",
                 username = "janesmith",
                 img = "https://example.com/janesmith.jpg",
-                comments = listOf("Testing comments","this is a test","this is a test"),
+                bitcoinWallet = "1sgQxKtQBtHc123123cnz8VF9ee6",
+                ethereumWallet = "0x3103a5b4a0b1c5sdgasdgf8ebd13a3cfefdcd43aa",
+                litecoinWallet = "3tzpUeALpoPcpJ3233ftH7WS9eYY",
                 lastUpdated = FAKE_TIMESTAMP - 120 * 1000,
             ),
             UserEntity(
@@ -134,7 +143,9 @@ class UserLocalDataSourceImplTest {
                 name = "Alice Johnson",
                 username = "alicej",
                 img = "https://example.com/alicej.jpg",
-                comments = listOf(),
+                bitcoinWallet = "1sgQxKtQBtHc123123cnz8VF9ee6",
+                ethereumWallet = "0x3103a5b4a0b1c5sdgasdgf8ebd13a3cfefdcd43aa",
+                litecoinWallet = "3tzpUeALpoPcpJ3233ftH7WS9eYY",
                 lastUpdated = FAKE_TIMESTAMP - 120 * 1000,
             ),
             UserEntity(
@@ -142,7 +153,9 @@ class UserLocalDataSourceImplTest {
                 name = "Bob Brown",
                 username = "bobbrown",
                 img = "https://example.com/bobbrown.jpg",
-                comments = listOf(),
+                bitcoinWallet = "1sgQxKtQBtHc123123cnz8VF9ee6",
+                ethereumWallet = "0x3103a5b4a0b1c5sdgasdgf8ebd13a3cfefdcd43aa",
+                litecoinWallet = "3tzpUeALpoPcpJ3233ftH7WS9eYY",
                 lastUpdated = FAKE_TIMESTAMP - 60 * 1000,
             )
         )
@@ -154,29 +167,37 @@ class UserLocalDataSourceImplTest {
                 id = 1,
                 name = "John Doe",
                 username = "johndoe",
+                bitcoinWallet = "1sgQxKtQBtHc123123cnz8VF9ee6",
+                ethereumWallet = "0x3103a5b4a0b1c5sdgasdgf8ebd13a3cfefdcd43aa",
+                litecoinWallet = "3tzpUeALpoPcpJ3233ftH7WS9eYY",
                 img = "https://example.com/johndoe.jpg",
-                comments = listOf("Hello World"),
             ),
             UserData(
                 id = 2,
                 name = "Jane Smith",
                 username = "janesmith",
+                bitcoinWallet = "1sgQxKtQBtHc123123cnz8VF9ee6",
+                ethereumWallet = "0x3103a5b4a0b1c5sdgasdgf8ebd13a3cfefdcd43aa",
+                litecoinWallet = "3tzpUeALpoPcpJ3233ftH7WS9eYY",
                 img = "https://example.com/janesmith.jpg",
-                comments = listOf("Testing comments","this is a test","this is a test"),
             ),
             UserData(
                 id = 3,
                 name = "Alice Johnson",
                 username = "alicej",
+                bitcoinWallet = "1sgQxKtQBtHc123123cnz8VF9ee6",
+                ethereumWallet = "0x3103a5b4a0b1c5sdgasdgf8ebd13a3cfefdcd43aa",
+                litecoinWallet = "3tzpUeALpoPcpJ3233ftH7WS9eYY",
                 img = "https://example.com/alicej.jpg",
-                comments = listOf(),
             ),
             UserData(
                 id = 4,
                 name = "Bob Brown",
                 username = "bobbrown",
+                bitcoinWallet = "1sgQxKtQBtHc123123cnz8VF9ee6",
+                ethereumWallet = "0x3103a5b4a0b1c5sdgasdgf8ebd13a3cfefdcd43aa",
+                litecoinWallet = "3tzpUeALpoPcpJ3233ftH7WS9eYY",
                 img = "https://example.com/bobbrown.jpg",
-                comments = listOf(),
             )
         )
     }

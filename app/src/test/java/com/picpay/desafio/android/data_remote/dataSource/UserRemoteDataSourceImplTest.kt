@@ -80,7 +80,9 @@ class UserRemoteDataSourceImplTest {
                 name = "John Doe",
                 username = "johndoe",
                 img = "https://example",
-                comments = null,
+                bitcoinWallet = "1sgQxKtQBtHc123123cnz8VF9ee6",
+                ethereumWallet = "0x3103a5b4a0b1c5sdgasdgf8ebd13a3cfefdcd43aa",
+                litecoinWallet = "3tzpUeALpoPcpJ3233ftH7WS9eYY",
         )))
 
         val expectedResult = listOf(
@@ -89,7 +91,9 @@ class UserRemoteDataSourceImplTest {
                 name = "John Doe",
                 username = "johndoe",
                 img = "https://example",
-                comments = listOf(),
+                bitcoinWallet = "1sgQxKtQBtHc123123cnz8VF9ee6",
+                ethereumWallet = "0x3103a5b4a0b1c5sdgasdgf8ebd13a3cfefdcd43aa",
+                litecoinWallet = "3tzpUeALpoPcpJ3233ftH7WS9eYY",
             )
         )
         val call = mock<Call<List<UserResponse>>>()
@@ -182,28 +186,36 @@ class UserRemoteDataSourceImplTest {
                 name = "John Doe",
                 username = "johndoe",
                 img = "https://example.com/johndoe.jpg",
-                comments = listOf("Hello World"),
+                bitcoinWallet = "1sgQxKtQBtHc123123cnz8VF9ee6",
+                ethereumWallet = "0x3103a5b4a0b1c5sdgasdgf8ebd13a3cfefdcd43aa",
+                litecoinWallet = "3tzpUeALpoPcpJ3233ftH7WS9eYY",
             ),
             UserResponse(
                 id = 2,
                 name = "Jane Smith",
                 username = "janesmith",
                 img = "https://example.com/janesmith.jpg",
-                comments = listOf("Testing comments"),
+                bitcoinWallet = "1sgQxKtQBtHc123123cnz8VF9ee6",
+                ethereumWallet = "0x3103a5b4a0b1c5sdgasdgf8ebd13a3cfefdcd43aa",
+                litecoinWallet = "3tzpUeALpoPcpJ3233ftH7WS9eYY",
             ),
             UserResponse(
                 id = 3,
                 name = "Alice Johnson",
                 username = "alicej",
                 img = "https://example.com/alicej.jpg",
-                comments = null,
+                bitcoinWallet = "1sgQxKtQBtHc123123cnz8VF9ee6",
+                ethereumWallet = "0x3103a5b4a0b1c5sdgasdgf8ebd13a3cfefdcd43aa",
+                litecoinWallet = "3tzpUeALpoPcpJ3233ftH7WS9eYY",
             ),
             UserResponse(
                 id = 4,
                 name = "Bob Brown",
                 username = "bobbrown",
                 img = "https://example.com/bobbrown.jpg",
-                comments = listOf(),
+                bitcoinWallet = "1sgQxKtQBtHc123123cnz8VF9ee6",
+                ethereumWallet = "0x3103a5b4a0b1c5sdgasdgf8ebd13a3cfefdcd43aa",
+                litecoinWallet = "3tzpUeALpoPcpJ3233ftH7WS9eYY",
             )
         )
     }
@@ -215,28 +227,36 @@ class UserRemoteDataSourceImplTest {
                 name = "John Doe",
                 username = "johndoe",
                 img = "https://example.com/johndoe.jpg",
-                comments = listOf("Hello World"),
+                bitcoinWallet = "1sgQxKtQBtHc123123cnz8VF9ee6",
+                ethereumWallet = "0x3103a5b4a0b1c5sdgasdgf8ebd13a3cfefdcd43aa",
+                litecoinWallet = "3tzpUeALpoPcpJ3233ftH7WS9eYY",
             ),
             UserData(
                 id = 2,
                 name = "Jane Smith",
                 username = "janesmith",
                 img = "https://example.com/janesmith.jpg",
-                comments = listOf("Testing comments"),
+                bitcoinWallet = "1sgQxKtQBtHc123123cnz8VF9ee6",
+                ethereumWallet = "0x3103a5b4a0b1c5sdgasdgf8ebd13a3cfefdcd43aa",
+                litecoinWallet = "3tzpUeALpoPcpJ3233ftH7WS9eYY",
             ),
             UserData(
                 id = 3,
                 name = "Alice Johnson",
                 username = "alicej",
                 img = "https://example.com/alicej.jpg",
-                comments = listOf(),
+                bitcoinWallet = "1sgQxKtQBtHc123123cnz8VF9ee6",
+                ethereumWallet = "0x3103a5b4a0b1c5sdgasdgf8ebd13a3cfefdcd43aa",
+                litecoinWallet = "3tzpUeALpoPcpJ3233ftH7WS9eYY",
             ),
             UserData(
                 id = 4,
                 name = "Bob Brown",
                 username = "bobbrown",
                 img = "https://example.com/bobbrown.jpg",
-                comments = listOf(),
+                bitcoinWallet = "1sgQxKtQBtHc123123cnz8VF9ee6",
+                ethereumWallet = "0x3103a5b4a0b1c5sdgasdgf8ebd13a3cfefdcd43aa",
+                litecoinWallet = "3tzpUeALpoPcpJ3233ftH7WS9eYY",
             )
         )
     }

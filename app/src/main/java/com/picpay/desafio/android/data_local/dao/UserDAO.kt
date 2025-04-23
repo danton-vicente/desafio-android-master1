@@ -4,7 +4,6 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.picpay.desafio.android.data_local.model.CacheEntity
 import com.picpay.desafio.android.data_local.model.UserEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -13,6 +12,9 @@ interface UserDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(users: List<UserEntity>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(user: UserEntity)
 
     @Query("SELECT * FROM user")
     fun getAllUsers(): List<UserEntity>

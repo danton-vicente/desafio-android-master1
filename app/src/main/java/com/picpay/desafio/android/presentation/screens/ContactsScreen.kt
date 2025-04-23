@@ -1,13 +1,12 @@
-package com.picpay.desafio.android.presentation
+package com.picpay.desafio.android.presentation.screens
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,14 +18,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
-import androidx.compose.material.icons.automirrored.filled.Send
-import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material3.Card
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -40,14 +33,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import com.picpay.desafio.android.presentation.events.ContactsScreenEvents
+import com.picpay.desafio.android.presentation.events.ContactsScreenNavigationEvents
+import com.picpay.desafio.android.presentation.states.ContactsScreenState
+import com.picpay.desafio.android.presentation.strings.PtContactsScreenStrings
 import com.picpay.desafio.android.ui.AppTheme
 import com.picpay.desafio.android.ui.components.GenericShimmer
 import com.picpay.desafio.android.ui.components.GenericTopBar
 import com.picpay.desafio.android.ui.components.UserPhotoWithInitials
-import com.picpay.desafio.android.ui.dimens10
-import com.picpay.desafio.android.ui.dimens12
 import com.picpay.desafio.android.ui.dimens14
-import com.picpay.desafio.android.ui.dimens15
 import com.picpay.desafio.android.ui.dimens2
 import com.picpay.desafio.android.ui.dimens20
 import com.picpay.desafio.android.ui.dimens3
@@ -61,6 +55,7 @@ fun ContactsScreen(
     navigationEvents: MutableSharedFlow<ContactsScreenNavigationEvents>,
     initViewModel: () -> Unit,
     onBackPressed: () -> Unit,
+    onNavigateToDetails: (String) -> Unit,
 ) {
 
     val localString = staticCompositionLocalOf { PtContactsScreenStrings }
@@ -75,6 +70,10 @@ fun ContactsScreen(
             when (event) {
                 is ContactsScreenNavigationEvents.NavigateBack -> {
                     onBackPressed()
+                }
+
+                is ContactsScreenNavigationEvents.NavigateToContactDetails -> {
+                    onNavigateToDetails(event.id.toString())
                 }
             }
         }
@@ -169,13 +168,20 @@ fun ContactsScreen(
                                 name = user.name,
                                 userPhoto = user.img,
                                 username = user.username,
+                                onClick = {
+                                    onEvent(
+                                        ContactsScreenEvents.OnCardClicked(
+                                            index
+                                        )
+                                    )
+                                }
                             )
                         }
                     }
                 )
             }
 
-            if (state.showError){
+            if (state.showError) {
 
             }
         }
@@ -187,11 +193,15 @@ fun ContactsCard(
     name: String,
     userPhoto: String?,
     username: String,
+    onClick: () -> Unit = {}
 ) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(dimens20),
+            .height(dimens20)
+            .clickable {
+                onClick()
+            },
         shape = RoundedCornerShape(dimens4),
         content = {
             Row(
@@ -199,7 +209,7 @@ fun ContactsCard(
                     .fillMaxWidth()
                     .padding(dimens3),
                 verticalAlignment = Alignment.CenterVertically,
-            ){
+            ) {
                 UserPhotoWithInitials(
                     modifier = Modifier
                         .size(dimens14),
@@ -244,7 +254,7 @@ fun ContactsCard(
                     modifier = Modifier
                         .size(dimens20)
                         .wrapContentSize(),
-                    onClick = {  },
+                    onClick = { },
                     content = {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
@@ -269,7 +279,8 @@ private fun ContactsScreenPreview() {
             onEvent = {},
             navigationEvents = MutableSharedFlow(),
             initViewModel = {},
-            onBackPressed = {}
+            onBackPressed = {},
+            onNavigateToDetails = {}
         )
     }
 }
