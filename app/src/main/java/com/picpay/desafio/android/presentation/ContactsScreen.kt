@@ -264,7 +264,7 @@ private fun ContactsScreenPreview() {
     AppTheme {
         ContactsScreen(
             state = ContactsScreenState(
-                isLoading = false
+                isLoading = true
             ),
             onEvent = {},
             navigationEvents = MutableSharedFlow(),

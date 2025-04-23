@@ -4,10 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.navigation.compose.rememberNavController
 import com.picpay.desafio.android.presentation.navigation.ContactsNavHost
+import com.picpay.desafio.android.ui.AppTheme
 
 class ContactsActivity : ComponentActivity() {
 
@@ -16,7 +16,7 @@ class ContactsActivity : ComponentActivity() {
         enableEdgeToEdge()
 
         setContent {
-            MaterialTheme {
+            AppTheme {
                 Surface {
                     val navController = rememberNavController()
                     ContactsNavHost(

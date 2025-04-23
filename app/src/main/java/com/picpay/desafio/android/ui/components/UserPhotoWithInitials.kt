@@ -41,7 +41,8 @@ fun UserPhotoWithInitials(
 
     if (url != null) {
         SubcomposeAsyncImage(
-            modifier = modifier,
+            modifier = modifier
+                .clip(CircleShape),
             contentScale = ContentScale.Crop,
             model = ImageRequest.Builder(context)
                 .data(url)
@@ -60,7 +61,7 @@ fun UserPhotoWithInitials(
                                 (12.dp)
                             .align
                                 (Alignment.Center),
-                        color = MaterialTheme.colorScheme.primary
+                        color = MaterialTheme.colorScheme.primary,
                     )
                 }
             },
